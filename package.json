@@ -1,19 +1,14 @@
 {
   "name": "knbn-mcp",
-  "version": "0.3.0",
-  "description": "A simple kanban CLI tool",
+  "version": "0.3.1",
+  "description": "MCP server for knbn",
   "author": "Matthew Balmer <contact@mattbalmer.com>",
-  "exports": {
-    "./*": "./dist/core/*.js",
-    "./cli/*": "./dist/cli/*.js",
-    "./package.json": "./package.json"
-  },
   "files": [
     "dist"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mattbalmer/knbn"
+    "url": "https://github.com/mattbalmer/knbn-mcp"
   },
   "bin": "dist/server.js",
   "scripts": {
