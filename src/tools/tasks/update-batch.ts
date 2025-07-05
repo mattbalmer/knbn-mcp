@@ -38,7 +38,7 @@ export const registerUpdateTasksBatchTool = (server: McpServer) =>
         if (!args.updates || Object.keys(args.updates).length === 0) {
           return {
             isError: true,
-            contents: [{
+            content: [{
               type: 'text',
               text: 'No task updates specified. Provide a record of task updates.'
             }],
@@ -72,7 +72,7 @@ export const registerUpdateTasksBatchTool = (server: McpServer) =>
       } catch (error: any) {
         return {
           isError: true,
-          contents: [{
+          content: [{
             type: 'text',
             text: error?.message || error || 'Unknown error updating tasks'
           }],

@@ -34,7 +34,7 @@ export const registerGetTaskTool = (server: McpServer) =>
         if (!task) {
           return {
             isError: true,
-            contents: [{
+            content: [{
               type: 'text',
               text: `Task #${args.id} not found`
             }],
@@ -59,7 +59,7 @@ export const registerGetTaskTool = (server: McpServer) =>
       } catch (error: any) {
         return {
           isError: true,
-          contents: [{
+          content: [{
             type: 'text',
             text: error?.message || error || 'Unknown error getting task'
           }],

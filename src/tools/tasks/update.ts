@@ -44,7 +44,7 @@ export const registerUpdateTaskTool = (server: McpServer) =>
         if (Object.keys(updates).length === 0) {
           return {
             isError: true,
-            contents: [{
+            content: [{
               type: 'text',
               text: 'No updates specified. Provide at least one field to update.'
             }],
@@ -57,7 +57,7 @@ export const registerUpdateTaskTool = (server: McpServer) =>
         if (!task) {
           return {
             isError: true,
-            contents: [{
+            content: [{
               type: 'text',
               text: `Task #${args.id} not found`
             }],
@@ -82,7 +82,7 @@ export const registerUpdateTaskTool = (server: McpServer) =>
       } catch (error: any) {
         return {
           isError: true,
-          contents: [{
+          content: [{
             type: 'text',
             text: error?.message || error || 'Unknown error updating task'
           }],
