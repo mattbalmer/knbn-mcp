@@ -1,5 +1,5 @@
-name: KnBn Project Board
-description: Development board for the KnBn kanban CLI tool
+name: KnBn MCP Development
+description: My local kanban board
 columns:
   - name: backlog
   - name: todo
@@ -8,66 +8,25 @@ columns:
 tasks:
   '1':
     id: 1
-    title: Remove CWD print
-    description: ''
-    column: done
-    sprint: Alpha
-    dates:
-      created: '2025-06-29T18:56:24.822Z'
-      updated: '2025-06-29T18:59:00.000Z'
-      moved: '2025-06-29T18:59:00.000Z'
-  '2':
-    id: 2
-    title: Consistency in dates for metadata
-    description: ''
+    title: 'Fix MCP list_tasks error: tasks[0].column is undefined instead of string'
+    description: 'Error: MCP error -32602: MCP error -32602: Invalid structured content for tool list_tasks: [
+           {
+             "code": "invalid_type",
+             "expected": "string",
+             "received": "undefined",
+             "path": [
+               "tasks",
+               0,
+               "column"
+             ],'
     column: backlog
     dates:
-      created: '2025-06-30T00:05:25.427Z'
-      updated: '2025-06-30T00:05:25.427Z'
-  '3':
-    id: 3
-    title: Get task / query task ability
-    description: So you can tell claude to "get the next todo task"
-    column: backlog
-    dates:
-      created: '2025-06-30T00:13:27.696Z'
-      updated: '2025-06-30T00:13:27.696Z'
-  '4':
-    id: 4
-    title: Comprehensive documentation
-    description: So claude can figure out how to use the commands correctly.
-    column: backlog
-    dates:
-      created: '2025-06-30T00:13:48.612Z'
-      updated: '2025-06-30T00:13:48.612Z'
-  '5':
-    id: 5
-    title: MCP?
-    description: Figure out if some sort of MCP adapter is necessary.
-    column: backlog
-    dates:
-      created: '2025-06-30T00:14:04.471Z'
-      updated: '2025-06-30T00:14:04.471Z'
-  '6':
-    id: 6
-    title: Open browser by default
-    description: Optional flag to suppress opening a browser with URL.
-    column: backlog
-    dates:
-      created: '2025-06-30T00:15:58.915Z'
-      updated: '2025-06-30T00:15:58.915Z'
-labels: []
-sprints:
-  - name: Alpha
-    description: Initial alpha release with basic features
-    dates:
-      created: '2025-06-01T00:00:00Z'
-      starts: '2025-06-01T00:00:00Z'
-      ends: '2025-06-08T23:59:59Z'
-metadata:
-  nextId: 7
-  version: '0.2'
+      created: '2025-07-05T03:40:23.476Z'
+      updated: '2025-07-05T03:40:23.476Z'
 dates:
-  created: '2025-06-29T00:00:00Z'
-  updated: '2025-06-30T00:15:58.915Z'
-  saved: '2025-07-05T00:49:19.997Z'
+  created: '2025-07-05T03:09:27.130Z'
+  updated: '2025-07-05T03:40:23.476Z'
+  saved: '2025-07-05T03:40:23.477Z'
+metadata:
+  nextId: 2
+  version: '0.2'
