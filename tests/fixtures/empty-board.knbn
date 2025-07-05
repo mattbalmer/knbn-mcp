@@ -1,0 +1,13 @@
+name: "Empty Board"
+description: "An empty test board"
+columns:
+  - name: "todo"
+  - name: "done"
+tasks: {}
+metadata:
+  nextId: 1
+  version: "0.2"
+dates:
+  created: "2024-01-01T09:00:00Z"
+  updated: "2024-01-01T09:00:00Z"
+  saved: "2024-01-01T09:00:00Z"

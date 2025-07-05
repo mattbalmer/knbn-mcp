@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "knbn": {
+      "command": "node",
+      "args": ["./dist/server.js"]
+    }
+  }
+}

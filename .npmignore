@@ -1,0 +1,13 @@
+.claude/
+.idea/
+node_modules/
+claude-test.knbn
+src/**/*.d.ts
+src/**/*.d.ts.map
+coverage/
+tests/
+.knbn
+CLAUDE.md
+jest.config.js
+.yarn/
+.yarnrc.yml

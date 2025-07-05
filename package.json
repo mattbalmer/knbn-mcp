@@ -1,0 +1,47 @@
+{
+  "name": "knbn-mcp",
+  "version": "0.3.0",
+  "boardVersion": "0.2",
+  "description": "A simple kanban CLI tool",
+  "author": "Matthew Balmer <contact@mattbalmer.com>",
+  "exports": {
+    "./*": "./dist/core/*.js",
+    "./cli/*": "./dist/cli/*.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattbalmer/knbn"
+  },
+  "bin": "dist/server.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "knbn",
+    "kanban",
+    "cli",
+    "typescript"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.0",
+    "js-yaml": "^4.1.0",
+    "knbn": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.5.0",
+    "jest": "^30.0.3",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.1.6"
+  },
+  "packageManager": "yarn@4.9.2"
+}

@@ -1,0 +1,10 @@
+.claude/
+.idea/
+dist/
+node_modules/
+claude-test.knbn
+src/**/*.d.ts
+src/**/*.d.ts.map
+coverage/
+.yarn/
+tests/tmp/

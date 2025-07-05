@@ -1,0 +1,45 @@
+name: "Test Board"
+description: "A test board with sample data"
+columns:
+  - name: "todo"
+  - name: "doing"
+  - name: "done"
+tasks:
+  1:
+    id: 1
+    title: "First Task"
+    description: "This is the first test task"
+    column: "todo"
+    labels:
+      - "test"
+      - "example"
+    dates:
+      created: "2024-01-01T10:00:00Z"
+      updated: "2024-01-01T10:00:00Z"
+  2:
+    id: 2
+    title: "Second Task"
+    description: "This is the second test task"
+    column: "doing"
+    storyPoints: 3
+    dates:
+      created: "2024-01-01T11:00:00Z"
+      updated: "2024-01-01T11:00:00Z"
+      moved: "2024-01-01T11:30:00Z"
+  3:
+    id: 3
+    title: "Completed Task"
+    description: "This task is already done"
+    column: "done"
+    priority: 1
+    dates:
+      created: "2024-01-01T09:00:00Z"
+      updated: "2024-01-01T12:00:00Z"
+      moved: "2024-01-01T12:00:00Z"
+metadata:
+  nextId: 4
+  version: "0.2"
+dates:
+  created: "2024-01-01T08:00:00Z"
+  updated: "2024-01-01T12:00:00Z"
+  saved: "2024-01-01T12:00:00Z"
