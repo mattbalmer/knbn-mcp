@@ -40,7 +40,7 @@ const board = z.object({
   name: z.string(),
   description: z.string().optional(),
   columns: z.array(column),
-  tasks: z.record(z.number(), task),
+  tasks: z.record(z.string(), task),
   labels: z.array(label).optional(),
   sprints: z.array(sprint).optional(),
   metadata: z.object({
