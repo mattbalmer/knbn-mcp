@@ -2,7 +2,7 @@
 
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { KNBN_CORE_VERSION } from 'knbn/constants/index';
+import { KNBN_CORE_VERSION } from 'knbn-core/constants/index';
 
 // Import all tool registrations
 import { registerBoardTools } from './tools/board';

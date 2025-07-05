@@ -2,8 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { registerMigrateTool } from '../../../src/tools/board/migrate';
 import { createTempDir, rmTempDir } from '../../test-utils';
-import { loadBoard } from 'knbn/utils/board-files';
-import { Filepath } from 'knbn/types/ts';
+import { loadBoard } from 'knbn-core/utils/board-files';
+import { Filepath } from 'knbn-core/types/ts';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 
 describe('MCP Migrate Tool', () => {

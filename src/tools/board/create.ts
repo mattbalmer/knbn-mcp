@@ -1,10 +1,11 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerStructuredTool } from '../../patch';
-import { Brands } from 'knbn/utils/ts';
+import { Brands } from 'knbn-core/utils/ts';
 import path from 'path';
-import { pcwd } from 'knbn/utils/files';
-import { createBoard } from 'knbn/actions/board';
+import { getFilenameFromBoardName, getFilepathForBoardFile, pcwd } from 'knbn-core/utils/files';
+import { createBoard } from 'knbn-core/actions/board';
 import { z } from 'zod';
+import { zknbn } from '../../zod/output';
 
 export const registerCreateBoardTool = (server: McpServer) =>
   registerStructuredTool(server, 'create_board',
@@ -13,43 +14,27 @@ export const registerCreateBoardTool = (server: McpServer) =>
       description: 'Create a new .knbn board file',
       inputSchema: {
         name: z.string().describe('Board name'),
-        description: z.string().optional().describe('Board description'),
+        description: z.string().optional().nullish().describe('Board description'),
         filename: z.string().optional().describe('Custom filename (defaults to .knbn)'),
       },
       outputSchema: {
-        filepath: z.string(),
-        board: z.object({
-          name: z.string(),
-          description: z.string().optional(),
-          columns: z.array(z.object({
-            name: z.string(),
-          })),
-          metadata: z.object({
-            nextId: z.number(),
-            version: z.string(),
-          }),
-        }),
+        filename: z.string(),
+        board: zknbn.board,
       },
     },
     async (args) => {
       try {
-        const filename = args.filename || '.knbn';
-        const filepath = Brands.Filepath(path.join(pcwd(), filename)) as any;
-
+        const filepath = getFilepathForBoardFile(getFilenameFromBoardName(args.name));
         const board = createBoard(filepath, {
           name: args.name,
-          description: args.description,
+          description: args.description ?? undefined,
         });
+        const filename = path.basename(filepath);
 
         return {
           structuredContent: {
-            filepath: filename,
-            board: {
-              name: board.name,
-              description: board.description,
-              columns: board.columns,
-              metadata: board.metadata,
-            },
+            filename,
+            board,
           },
         };
       } catch (error: any) {

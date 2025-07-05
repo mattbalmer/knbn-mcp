@@ -1,8 +1,8 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerStructuredTool } from '../../patch';
-import { listSprints, getActiveSprints, getUpcomingSprints, getCompletedSprints } from 'knbn/actions/sprint';
-import { pcwd } from 'knbn/utils/files';
-import { Brands } from 'knbn/utils/ts';
+import { listSprints, getActiveSprints, getUpcomingSprints, getCompletedSprints } from 'knbn-core/actions/sprint';
+import { pcwd } from 'knbn-core/utils/files';
+import { Brands } from 'knbn-core/utils/ts';
 import { z } from 'zod';
 import * as path from 'path';
 

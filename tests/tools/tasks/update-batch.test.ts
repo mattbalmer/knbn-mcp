@@ -1,17 +1,17 @@
 import { registerUpdateTasksBatchTool } from '../../../src/tools/tasks/update-batch';
-import { updateTasksBatch } from 'knbn/actions/task';
+import { updateTasksBatch } from 'knbn-core/actions/task';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { Brands } from 'knbn/utils/ts';
+import { Brands } from 'knbn-core/utils/ts';
 // @ts-ignore
 import { createTempDir } from '../../test-utils';
 
 // Mock the core action
-jest.mock('knbn/actions/task', () => ({
+jest.mock('knbn-core/actions/task', () => ({
   updateTasksBatch: jest.fn()
 }));
 
 // Mock the path and file utilities
-jest.mock('knbn/utils/files', () => ({
+jest.mock('knbn-core/utils/files', () => ({
   pcwd: () => '/test/cwd'
 }));
 

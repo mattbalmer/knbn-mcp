@@ -1,8 +1,8 @@
 import { McpServer, ResourceTemplate } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { loadBoard, loadBoardFields } from 'knbn/utils/board-files';
-import { findBoardFiles } from 'knbn/actions/board';
-import { pcwd } from 'knbn/utils/files';
-import { Brands } from 'knbn/utils/ts';
+import { loadBoard, loadBoardFields } from 'knbn-core/utils/board-files';
+import { findBoardFiles } from 'knbn-core/actions/board';
+import { pcwd } from 'knbn-core/utils/files';
+import { Brands } from 'knbn-core/utils/ts';
 import * as path from 'path';
 import * as yaml from 'js-yaml';
 
@@ -17,7 +17,7 @@ export const registerBoardResources = (server: McpServer) => {
           const resources = files.map(file => {
             const filename = path.basename(file);
             try {
-              const board = loadBoardFields(file, ['name', 'description']);
+              const board = loadBoard(file);
               return {
                 uri: `knbn://board/${filename}`,
                 name: board.name || filename,

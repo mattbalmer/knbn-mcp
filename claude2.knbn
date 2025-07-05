@@ -1,0 +1,30 @@
+name: Claude Test Board
+description: Test board for Claude CLI functionality
+columns:
+  - name: todo
+  - name: in-progress
+  - name: done
+labels: []
+tasks:
+  '1':
+    id: 1
+    title: Updated task title
+    description: ''
+    column: done
+    dates:
+      created: '2025-06-29T18:50:55.484Z'
+      updated: '2025-06-29T19:01:58.935Z'
+      moved: '2025-06-29T19:01:58.935Z'
+sprints:
+  - name: Test Sprint
+    description: Test sprint for filtering
+    dates:
+      created: '2025-07-05T03:59:41.567Z'
+      starts: '2025-07-05T03:59:41.567Z'
+dates:
+  created: '2025-06-29T00:00:00Z'
+  updated: '2025-07-05T03:59:41.568Z'
+  saved: '2025-07-05T03:59:41.568Z'
+metadata:
+  nextId: 2
+  version: '0.2'

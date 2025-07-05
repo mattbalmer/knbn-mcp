@@ -1567,13 +1567,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^14.0.0":
-  version: 14.0.0
-  resolution: "commander@npm:14.0.0"
-  checksum: 10c0/73c4babfa558077868d84522b11ef56834165d472b9e86a634cd4c3ae7fc72d59af6377d8878e06bd570fe8f3161eced3cbe383c38f7093272bb65bd242b595b
-  languageName: node
-  linkType: hard
-
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -2977,6 +2970,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"knbn-core@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "knbn-core@npm:0.3.3"
+  dependencies:
+    js-yaml: "npm:^4.1.0"
+  checksum: 10c0/9a9dc12d672fdcd5caca7c1e508eae3fec0b0b81c4cd64c362b632862c42e1113695486a77d37c12dcba9c212e31d859311173a57485bbb3b27ab72128fbc2b7
+  languageName: node
+  linkType: hard
+
 "knbn-mcp@workspace:.":
   version: 0.0.0-use.local
   resolution: "knbn-mcp@workspace:."
@@ -2987,27 +2989,13 @@ __metadata:
     "@types/node": "npm:^20.5.0"
     jest: "npm:^30.0.3"
     js-yaml: "npm:^4.1.0"
-    knbn: "npm:^0.3.0"
+    knbn-core: "npm:^0.3.3"
     ts-jest: "npm:^29.4.0"
     typescript: "npm:^5.1.6"
   bin:
     knbn-mcp: dist/server.js
   languageName: unknown
   linkType: soft
-
-"knbn@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "knbn@npm:0.3.0"
-  dependencies:
-    "@modelcontextprotocol/sdk": "npm:^1.15.0"
-    commander: "npm:^14.0.0"
-    js-yaml: "npm:^4.1.0"
-  bin:
-    knbn: dist/cli/index.js
-    knbn-mcp: dist/mcp/server.js
-  checksum: 10c0/ffd6e26d0ef879e6a27a187dd5435ea4406d7ccc5e8fbec2b30d694d44b50bfac044870592f5077634d675428d28bbf990d8221a427651d54e6ef2b02f64a05e
-  languageName: node
-  linkType: hard
 
 "leven@npm:^3.1.0":
   version: 3.1.0

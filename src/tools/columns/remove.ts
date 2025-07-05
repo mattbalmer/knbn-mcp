@@ -1,8 +1,8 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerStructuredTool } from '../../patch';
-import { removeColumn } from 'knbn/actions/column';
-import { pcwd } from 'knbn/utils/files';
-import { Brands } from 'knbn/utils/ts';
+import { removeColumn } from 'knbn-core/actions/column';
+import { pcwd } from 'knbn-core/utils/files';
+import { Brands } from 'knbn-core/utils/ts';
 import { z } from 'zod';
 import * as path from 'path';
 

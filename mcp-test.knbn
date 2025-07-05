@@ -1,0 +1,45 @@
+name: MCP Test
+description: Test board for MCP
+columns:
+  - name: backlog
+  - name: todo
+  - name: working
+  - name: done
+tasks:
+  '1':
+    id: 1
+    title: Test MCP create_Task
+    description: description test
+    column: todo
+    labels:
+      - blorp
+    priority: 1
+    dates:
+      created: '2025-07-05T15:20:05.654Z'
+      updated: '2025-07-05T15:39:33.993Z'
+      moved: '2025-07-05T15:30:55.364Z'
+  '2':
+    id: 2
+    title: Test MCP batch_update
+    description: will do in a moment
+    column: backlog
+    labels: []
+    dates:
+      created: '2025-07-05T15:20:35.650Z'
+      updated: '2025-07-05T15:39:33.993Z'
+  '3':
+    id: 3
+    title: Takes Custom column
+    description: ''
+    column: todo
+    labels: []
+    dates:
+      created: '2025-07-05T15:27:52.903Z'
+      updated: '2025-07-05T15:27:52.903Z'
+dates:
+  created: '2025-07-05T15:19:06.620Z'
+  updated: '2025-07-05T15:39:33.993Z'
+  saved: '2025-07-05T15:39:33.995Z'
+metadata:
+  nextId: 4
+  version: '0.2'

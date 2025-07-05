@@ -1,8 +1,8 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerStructuredTool } from '../../patch';
-import { updateLabel, getLabel } from 'knbn/actions/label';
-import { pcwd } from 'knbn/utils/files';
-import { Brands } from 'knbn/utils/ts';
+import { updateLabel, getLabel } from 'knbn-core/actions/label';
+import { pcwd } from 'knbn-core/utils/files';
+import { Brands } from 'knbn-core/utils/ts';
 import { z } from 'zod';
 import * as path from 'path';
 
@@ -14,7 +14,7 @@ export const registerUpdateLabelTool = (server: McpServer) =>
       inputSchema: {
         currentName: z.string().describe('Current label name'),
         newName: z.string().optional().describe('New label name'),
-        color: z.string().optional().describe('New label color'),
+        color: z.string().optional().nullish().describe('New label color'),
         filename: z.string().optional().describe('Board filename (defaults to .knbn)'),
       },
       outputSchema: {
@@ -35,7 +35,7 @@ export const registerUpdateLabelTool = (server: McpServer) =>
 
         const updates: any = {};
         if (args.newName) updates.name = args.newName;
-        if (args.color !== undefined) updates.color = args.color;
+        if (args.hasOwnProperty('color')) updates.color = args.color;
 
         const board = updateLabel(filepath, args.currentName, updates);
         const updatedLabel = getLabel(filepath, args.newName || args.currentName);

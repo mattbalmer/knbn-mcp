@@ -1,9 +1,10 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerStructuredTool } from '../../patch';
-import { pcwd } from 'knbn/utils/files';
-import { findBoardFiles } from 'knbn/actions/board';
-import { loadBoardFields } from 'knbn/utils/board-files';
+import { pcwd } from 'knbn-core/utils/files';
+import { findBoardFiles } from 'knbn-core/actions/board';
+import { loadBoardFields } from 'knbn-core/utils/board-files';
 import { z } from 'zod';
+import path from 'path';
 
 export const registerListBoardsTool = (server: McpServer) =>
   registerStructuredTool(server, 'list_boards',
@@ -22,7 +23,9 @@ export const registerListBoardsTool = (server: McpServer) =>
     },
     async () => {
       // call core/boardUtils to list board files
-      const files = findBoardFiles(pcwd());
+      const files = findBoardFiles(pcwd())
+        .map(filepath => path.relative(pcwd(), filepath));
+
       const boardsLimited = files.map(file => {
         let boardName;
         try {

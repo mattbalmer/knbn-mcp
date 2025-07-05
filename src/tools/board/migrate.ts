@@ -1,9 +1,9 @@
 import { z } from 'zod';
 import * as fs from 'fs';
 import * as path from 'path';
-import { migrateBoard } from 'knbn/utils/migrations';
-import { saveBoard } from 'knbn/utils/board-files';
-import { Brands } from 'knbn/utils/ts';
+import { migrateBoard } from 'knbn-core/utils/migrations';
+import { saveBoard } from 'knbn-core/utils/board-files';
+import { Brands } from 'knbn-core/utils/ts';
 import * as yaml from 'js-yaml';
 import { registerStructuredTool } from '../../patch';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';

@@ -1,8 +1,8 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerStructuredTool } from '../../patch';
-import { updateSprint } from 'knbn/actions/sprint';
-import { pcwd } from 'knbn/utils/files';
-import { Brands } from 'knbn/utils/ts';
+import { updateSprint } from 'knbn-core/actions/sprint';
+import { pcwd } from 'knbn-core/utils/files';
+import { Brands } from 'knbn-core/utils/ts';
 import { z } from 'zod';
 import * as path from 'path';
 
@@ -14,10 +14,10 @@ export const registerUpdateSprintTool = (server: McpServer) =>
       inputSchema: {
         currentName: z.string().describe('Current sprint name'),
         newName: z.string().optional().describe('New sprint name'),
-        description: z.string().optional().describe('New sprint description'),
-        capacity: z.number().optional().describe('New sprint capacity'),
-        starts: z.string().optional().describe('New sprint start date (ISO string)'),
-        ends: z.string().optional().describe('New sprint end date (ISO string)'),
+        description: z.string().optional().nullish().describe('New sprint description'),
+        capacity: z.number().optional().nullish().describe('New sprint capacity'),
+        starts: z.string().optional().nullish().describe('New sprint start date (ISO string)'),
+        ends: z.string().optional().nullish().describe('New sprint end date (ISO string)'),
         filename: z.string().optional().describe('Board filename (defaults to .knbn)'),
       },
       outputSchema: {
@@ -40,12 +40,12 @@ export const registerUpdateSprintTool = (server: McpServer) =>
 
         const updates: any = {};
         if (args.newName) updates.name = args.newName;
-        if (args.description !== undefined) updates.description = args.description;
-        if (args.capacity !== undefined) updates.capacity = args.capacity;
-        if (args.starts !== undefined) {
+        if (args.hasOwnProperty('description')) updates.description = args.description;
+        if (args.hasOwnProperty('capacity')) updates.capacity = args.capacity;
+        if (args.hasOwnProperty('starts')) {
           updates.dates = { starts: args.starts };
         }
-        if (args.ends !== undefined) {
+        if (args.hasOwnProperty('ends')) {
           updates.dates = { ...updates.dates, ends: args.ends };
         }
 

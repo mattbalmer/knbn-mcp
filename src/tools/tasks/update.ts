@@ -1,10 +1,11 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerStructuredTool } from '../../patch';
-import { updateTask } from 'knbn/actions/task';
-import { pcwd } from 'knbn/utils/files';
-import { Brands } from 'knbn/utils/ts';
+import { updateTask } from 'knbn-core/actions/task';
+import { pcwd } from 'knbn-core/utils/files';
+import { Brands } from 'knbn-core/utils/ts';
 import { z } from 'zod';
 import * as path from 'path';
+import { zknbn } from '../../zod/output';
 
 export const registerUpdateTaskTool = (server: McpServer) =>
   registerStructuredTool(server, 'update_task',
@@ -14,30 +15,16 @@ export const registerUpdateTaskTool = (server: McpServer) =>
       inputSchema: {
         id: z.number().describe('Task ID to update'),
         title: z.string().optional().describe('New task title'),
-        description: z.string().optional().describe('New task description'),
-        column: z.string().optional().describe('New column for the task'),
+        description: z.string().nullish().describe('New task description'),
+        column: z.string().nullish().describe('New column for the task'),
         labels: z.array(z.string()).optional().describe('New task labels'),
-        priority: z.number().optional().describe('New task priority'),
-        storyPoints: z.number().optional().describe('New story points for the task'),
-        sprint: z.string().optional().describe('New sprint assignment'),
+        priority: z.number().nullish().describe('New task priority'),
+        storyPoints: z.number().nullish().describe('New story points for the task'),
+        sprint: z.string().nullish().describe('New sprint assignment'),
         filename: z.string().optional().describe('Board filename (defaults to .knbn)'),
       },
       outputSchema: {
-        task: z.object({
-          id: z.number(),
-          title: z.string(),
-          description: z.string().optional(),
-          column: z.string(),
-          labels: z.array(z.string()).optional(),
-          priority: z.number().optional(),
-          storyPoints: z.number().optional(),
-          sprint: z.string().optional(),
-          dates: z.object({
-            created: z.string(),
-            updated: z.string(),
-            moved: z.string().optional(),
-          }),
-        }),
+        task: zknbn.task,
       },
     },
     async (args) => {

@@ -1,10 +1,11 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerStructuredTool } from '../../patch';
-import { loadBoard } from 'knbn/utils/board-files';
-import { pcwd } from 'knbn/utils/files';
-import { Brands } from 'knbn/utils/ts';
+import { loadBoard } from 'knbn-core/utils/board-files';
+import { pcwd } from 'knbn-core/utils/files';
+import { Brands } from 'knbn-core/utils/ts';
 import { z } from 'zod';
 import * as path from 'path';
+import { zknbn } from '../../zod/output';
 
 export const registerGetTaskTool = (server: McpServer) =>
   registerStructuredTool(server, 'get_task',
@@ -16,21 +17,7 @@ export const registerGetTaskTool = (server: McpServer) =>
         filename: z.string().optional().describe('Board filename (defaults to .knbn)'),
       },
       outputSchema: {
-        task: z.object({
-          id: z.number(),
-          title: z.string(),
-          description: z.string().optional(),
-          column: z.string(),
-          labels: z.array(z.string()).optional(),
-          priority: z.number().optional(),
-          storyPoints: z.number().optional(),
-          sprint: z.string().optional(),
-          dates: z.object({
-            created: z.string(),
-            updated: z.string(),
-            moved: z.string().optional(),
-          }),
-        }),
+        task: zknbn.task,
       },
       annotations: {
         readOnlyHint: true,
