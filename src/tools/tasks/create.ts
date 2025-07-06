@@ -15,7 +15,7 @@ export const registerCreateTaskTool = (server: McpServer) =>
       inputSchema: {
         title: z.string().describe('Task title'),
         description: z.string().optional().describe('Task description'),
-        column: z.string().optional().describe('Column to place the task in (defaults to first column)'),
+        column: z.string().optional().describe('Column to place the task in (defaults to none, aka. backlog)'),
         labels: z.array(z.string()).optional().describe('Task labels'),
         priority: z.number().optional().describe('Task priority'),
         storyPoints: z.number().optional().describe('Story points for the task'),

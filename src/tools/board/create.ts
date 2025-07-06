@@ -1,6 +1,5 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { registerStructuredTool } from '../../patch';
-import { Brands } from 'knbn-core/utils/ts';
 import path from 'path';
 import { getFilenameFromBoardName, getFilepathForBoardFile, pcwd } from 'knbn-core/utils/files';
 import { createBoard } from 'knbn-core/actions/board';
@@ -38,7 +37,13 @@ export const registerCreateBoardTool = (server: McpServer) =>
           },
         };
       } catch (error: any) {
-        throw new Error(error?.message || error || 'Unknown error creating board');
+        return {
+          isError: true,
+          content: [{
+            type: 'text',
+            text: `Error creating board: ${error.message || error || 'Unknown error creating board'}`,
+          }]
+        }
       }
     }
   );

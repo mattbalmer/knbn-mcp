@@ -33,13 +33,13 @@ export const registerUpdateTaskTool = (server: McpServer) =>
         const filepath = Brands.Filepath(path.join(pcwd(), filename));
 
         const updates: any = {};
-        if (args.title !== undefined) updates.title = args.title;
-        if (args.description !== undefined) updates.description = args.description;
-        if (args.column !== undefined) updates.column = args.column;
-        if (args.labels !== undefined) updates.labels = args.labels;
-        if (args.priority !== undefined) updates.priority = args.priority;
-        if (args.storyPoints !== undefined) updates.storyPoints = args.storyPoints;
-        if (args.sprint !== undefined) updates.sprint = args.sprint;
+        if (args.hasOwnProperty('title')) updates.title = args.title;
+        if (args.hasOwnProperty('description')) updates.description = args.description;
+        if (args.hasOwnProperty('column')) updates.column = args.column;
+        if (args.hasOwnProperty('labels')) updates.labels = args.labels;
+        if (args.hasOwnProperty('priority')) updates.priority = args.priority;
+        if (args.hasOwnProperty('storyPoints')) updates.storyPoints = args.storyPoints;
+        if (args.hasOwnProperty('sprint')) updates.sprint = args.sprint;
 
         if (Object.keys(updates).length === 0) {
           return {

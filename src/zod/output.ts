@@ -4,7 +4,7 @@ const task = z.object({
   id: z.number(),
   title: z.string(),
   description: z.string().optional(),
-  column: z.string(),
+  column: z.string().optional(),
   labels: z.array(z.string()).optional(),
   priority: z.number().optional(),
   storyPoints: z.number().optional(),
@@ -40,7 +40,7 @@ const board = z.object({
   name: z.string(),
   description: z.string().optional(),
   columns: z.array(column),
-  tasks: z.record(z.string(), task),
+  tasks: z.record(z.union([z.string(), z.number()]), task),
   labels: z.array(label).optional(),
   sprints: z.array(sprint).optional(),
   metadata: z.object({

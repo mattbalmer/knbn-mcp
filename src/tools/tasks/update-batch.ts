@@ -14,7 +14,7 @@ export const registerUpdateTasksBatchTool = (server: McpServer) =>
       title: 'Update Multiple KnBn Tasks',
       description: 'Update multiple tasks at once in a KnBn board',
       inputSchema: {
-        updates: z.record(z.string(), z.object({
+        updates: z.record(z.union([z.string(), z.number()]), z.object({
           title: z.string().optional().describe('New task title'),
           description: z.string().nullish().describe('New task description'),
           column: z.string().nullish().describe('New column for the task'),
@@ -27,7 +27,7 @@ export const registerUpdateTasksBatchTool = (server: McpServer) =>
       },
       outputSchema: {
         updatedCount: z.number(),
-        tasks: z.record(z.string(), zknbn.task),
+        tasks: z.record(z.union([z.string(), z.number()]), zknbn.task),
       },
     },
     async (args) => {
@@ -45,19 +45,21 @@ export const registerUpdateTasksBatchTool = (server: McpServer) =>
           };
         }
 
-        const updates = Object.entries(args.updates).reduce((acc, [id, update]) => {
-          const updateData: Partial<Task> = Object.entries(update).reduce((updAcc, [key, value]) => {
-            if (value !== undefined) {
-              // @ts-ignore
-              updAcc[key] = value ?? undefined;
+        const updates = Object.entries(args.updates)
+          .reduce((acc, [id, update]) => {
+            const updateData: Partial<Task> = Object.entries(update).reduce((updAcc, [key, value]) => {
+              // Convert all nulls to undefined
+              if (value !== undefined) {
+                // @ts-ignore
+                updAcc[key] = value ?? undefined;
+              }
+              return updAcc;
+            }, {} as Partial<Task>);
+            return {
+              ...acc,
+              [parseInt(id, 10)]: updateData
             }
-            return updAcc;
-          }, {} as Partial<Task>);
-          return {
-            ...acc,
-            [parseInt(id, 10)]: updateData
-          }
-        }, {} as Record<number, Partial<Task>>);
+          }, {} as Record<number, Partial<Task>>);
 
         const {
           tasks: updatedTasks

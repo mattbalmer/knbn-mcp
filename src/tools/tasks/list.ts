@@ -15,9 +15,10 @@ export const registerListTasksTool = (server: McpServer) =>
       description: 'List all tasks in a KnBn board with optional filtering',
       inputSchema: {
         filename: z.string().optional().describe('Board filename (defaults to .knbn)'),
-        q: z.string().optional().describe('String to search tasks for'),
-        qFields: z.array(z.string()).optional().describe('Fields to apply the query to. Defaults to all searchable fields. Accepts: title, description, sprint, labels'),
+        q: z.string().optional().describe('String to search task title and description for'),
         column: z.string().optional().describe('Filter tasks by column'),
+        label: z.string().optional().describe('Filter tasks by label'),
+        sprint: z.string().optional().describe('Filter tasks by label'),
         priority: z.number().optional().describe('Filter tasks by priority'),
       },
       outputSchema: {
@@ -34,15 +35,23 @@ export const registerListTasksTool = (server: McpServer) =>
         const filename = args.filename || '.knbn';
         const filepath = Brands.Filepath(path.join(pcwd(), filename));
 
-        let tasks = findTasks(filepath, args.q ?? '', args.qFields)
+        let tasks = args.q ? findTasks(filepath, args.q): Object.values(loadBoard(filepath).tasks);
         const totalCount = tasks.length;
 
         // Apply filters
-        if (args.column) {
+        if (args.hasOwnProperty('column')) {
           tasks = tasks.filter(task => task.column === args.column);
         }
 
-        if (args.priority !== undefined) {
+        if (args.hasOwnProperty('sprint')) {
+          tasks = tasks.filter(task => task.sprint === args.sprint);
+        }
+
+        if (args.hasOwnProperty('label')) {
+          tasks = tasks.filter(task => task.labels?.some(l => l === args.label));
+        }
+
+        if (args.hasOwnProperty('priority')) {
           tasks = tasks.filter(task => task.priority === args.priority);
         }
 

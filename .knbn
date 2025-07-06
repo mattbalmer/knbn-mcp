@@ -10,7 +10,7 @@ tasks:
     id: 1
     title: 'Fix MCP list_tasks error: tasks[0].column is undefined instead of string'
     description: 'Error: MCP error -32602: MCP error -32602: Invalid structured content for tool list_tasks: [ { "code": "invalid_type", "expected": "string", "received": "undefined", "path": [ "tasks", 0, "column" ],'
-    column: todo
+    column: done
     dates:
       created: '2025-07-05T03:40:23.476Z'
       updated: '2025-07-05T15:30:34.743Z'

@@ -218,14 +218,14 @@ describe('MCP update-tasks-batch tool', () => {
       const result = await toolHandler({});
 
       expect(result.isError).toBe(true);
-      expect(result.contents[0].text).toContain('No task updates specified');
+      expect(result.content[0].text).toContain('No task updates specified');
     });
 
     it('should return error when updates is empty object', async () => {
       const result = await toolHandler({ updates: {} });
 
       expect(result.isError).toBe(true);
-      expect(result.contents[0].text).toContain('No task updates specified');
+      expect(result.content[0].text).toContain('No task updates specified');
     });
 
     it('should return error when core function throws', async () => {
@@ -240,7 +240,7 @@ describe('MCP update-tasks-batch tool', () => {
       const result = await toolHandler({ updates });
 
       expect(result.isError).toBe(true);
-      expect(result.contents[0].text).toContain('Task with ID 1 not found on the board.');
+      expect(result.content[0].text).toContain('Task with ID 1 not found on the board.');
     });
 
     it('should handle generic errors', async () => {
@@ -255,7 +255,7 @@ describe('MCP update-tasks-batch tool', () => {
       const result = await toolHandler({ updates });
 
       expect(result.isError).toBe(true);
-      expect(result.contents[0].text).toContain('Generic error');
+      expect(result.content[0].text).toContain('Generic error');
     });
 
     it('should handle unknown errors', async () => {
@@ -270,7 +270,7 @@ describe('MCP update-tasks-batch tool', () => {
       const result = await toolHandler({ updates });
 
       expect(result.isError).toBe(true);
-      expect(result.contents[0].text).toContain('String error');
+      expect(result.content[0].text).toContain('String error');
     });
 
     it('should handle null error', async () => {
@@ -285,7 +285,7 @@ describe('MCP update-tasks-batch tool', () => {
       const result = await toolHandler({ updates });
 
       expect(result.isError).toBe(true);
-      expect(result.contents[0].text).toContain('Unknown error updating tasks');
+      expect(result.content[0].text).toContain('Unknown error updating tasks');
     });
   });
 

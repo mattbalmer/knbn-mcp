@@ -8,3 +8,4 @@ src/**/*.d.ts.map
 coverage/
 .yarn/
 tests/tmp/
+mcp-test.knbn
